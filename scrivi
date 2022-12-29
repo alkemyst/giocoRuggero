@@ -12,7 +12,7 @@ from pygame import mixer
 import time
 import random
 
-lettereDaUsare = [ 'a', 'e', 'i', 'o', 'u', 'r' ]
+lettereDaUsare = [ 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'i', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'z' ]
 
 ################################################
 #
@@ -34,6 +34,7 @@ audio['l'] = './audio/l.ogg'
 audio['m'] = './audio/m.ogg'
 audio['n'] = './audio/n.ogg'
 audio['p'] = './audio/p.ogg'
+audio['q'] = './audio/q.ogg'
 audio['r'] = './audio/r.ogg'
 audio['s'] = './audio/s.ogg'
 audio['t'] = './audio/t.ogg'
