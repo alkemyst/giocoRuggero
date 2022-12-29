@@ -11,7 +11,6 @@ from pynput import keyboard
 from pygame import mixer
 import time
 import random
-from playsound import playsound
 
 lettereDaUsare = [ 'a', 'e', 'i', 'o', 'u', 'r' ]
 
@@ -62,7 +61,11 @@ def playAudioTutto(name) :
         mixer.music.stop()
         audioName = audio[name]
         print("Found '%s': playing" % audioName)
-        playsound(audioName)
+        mixer.music.load(audioName)
+        mixer.music.play(1, 0.0)
+        while mixer.music.get_busy() == True:
+            time.sleep(0.01)
+            continue
 
 def playAudio(name) :
     print("Looking for '%s'" % name)
