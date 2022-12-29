@@ -1,0 +1,76 @@
+#!/usr/bin/env python3
+
+################################################
+#
+# Imports 
+#
+################################################
+import wave
+import time
+from pynput import keyboard
+from pygame import mixer
+import time
+
+lettereDaUsare = {'a', 'e', 'i', 'o', 'u', 'r'}
+
+################################################
+#
+# Define letter audio files 
+#
+################################################
+audio = {}
+audio['a'] = './audio/a.ogg'
+audio['e'] = './audio/e.ogg'
+audio['i'] = './audio/i.ogg'
+audio['o'] = './audio/o.ogg'
+audio['u'] = './audio/u.ogg'
+audio['b'] = './audio/b.ogg'
+audio['c'] = './audio/c.ogg'
+audio['d'] = './audio/d.ogg'
+audio['f'] = './audio/f.ogg'
+audio['g'] = './audio/g.ogg'
+audio['l'] = './audio/l.ogg'
+audio['m'] = './audio/m.ogg'
+audio['n'] = './audio/n.ogg'
+audio['p'] = './audio/p.ogg'
+audio['r'] = './audio/r.ogg'
+audio['s'] = './audio/s.ogg'
+audio['t'] = './audio/t.ogg'
+audio['v'] = './audio/v.ogg'
+audio['z'] = './audio/z.ogg'
+
+audio['intro'] = './audio/intro.ogg'
+audio['si'] = './audio/si.ogg'
+audio['no'] = './audio/no.ogg'
+
+
+################################################
+#
+# Init audio 
+#
+################################################
+mixer.init()
+
+def playAudio(name) :
+    print("Looking for '%s'" % name)
+    if name in audio :
+        audioName = audio[name]
+        print("Found '%s': playing" % audioName)
+        mixer.music.load(audioName)
+        mixer.music.play()
+
+def on_press(key):
+    print (key)
+    try:
+        if len(key.char) == 1 :
+            print("'%s'" % key.char)
+            playAudio(key.char)
+    except:
+        print("not a letter")
+
+while True:
+    with keyboard.Listener(on_press=on_press) as listener:
+        listener.join()
+    time.sleep(0.01)
+
+
