@@ -44,6 +44,9 @@ audio['z'] = './audio/z.ogg'
 audio['intro'] = './audio/intro.ogg'
 audio['si'] = './audio/si.ogg'
 audio['no'] = './audio/no.ogg'
+audio['piano-si'] = './audio/piano-si.ogg'
+audio['piano-no'] = './audio/piano-no.ogg'
+audio['voce-nono'] = './audio/voce-nono.ogg'
 
 
 ################################################
@@ -76,10 +79,10 @@ def on_press(key):
             print("'%s'" % key.char)
             playAudio(key.char)
             if key.char == giusta :
-                playAudioTutto(key.char)
+                playAudioTutto('piano-si')
                 listener.stop()
             else :
-                playAudio(key.char)
+                playAudio('voce-nono')
     except:
         print("not a letter")
 
