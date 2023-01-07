@@ -67,17 +67,26 @@ def playAudio(name) :
         mixer.music.load(audioName)
         mixer.music.play()
 
+dolisten = True
+
 def on_press(key):
-    print (key)
-    try:
-        if len(key.char) == 1 :
-            print("'%s'" % key.char)
-            playAudio(key.char)
-    except:
-        print("not a letter")
+    global dolisten
+    if dolisten :
+        dolisten = False
+        print (key)
+        try:
+            if len(key.char) == 1 :
+                print("'%s'" % key.char)
+                playAudio(key.char)
+        except:
+            print("not a letter")
+
+def on_release(key):
+    global dolisten
+    dolisten = True
 
 while True:
-    with keyboard.Listener(on_press=on_press) as listener:
+    with keyboard.Listener(on_press=on_press, on_release=on_release) as listener:
         listener.join()
     time.sleep(0.01)
 
